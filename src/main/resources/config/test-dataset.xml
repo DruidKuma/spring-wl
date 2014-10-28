@@ -1,0 +1,14 @@
+<dataset>
+    <user_credentials credentials_id="1" login="user" password="123123" role="ROLE_USER"/>
+    <user_credentials credentials_id="2" login="druid" password="123123" role="ROLE_USER"/>
+
+    <users user_id="1" discount="0.0" email="user@mail.ru" first_name="Iurii" last_name="Medved" credentials_credentials_id="1"/>
+    <users user_id="2" discount="0.5" email="druid@mail.ru" first_name="Tom" last_name="Cruise" credentials_credentials_id="2"/>
+
+    <books book_id="1" title="Harry Potter" author="J.Rowling" year="1991" price="199" description="Lorem ipsum" genre="Fantasy"/>
+    <books book_id="2" title="Doctor Sleep" author="Stephen King" year="1995" price="299" description="Lorem ipsum" genre="Horror"/>
+
+    <orders order_id="1" creation_date="2014-10-13" qrcode="25384" status="WAITING" user_id="1"/>
+
+    <orders_books orders_order_id="1" items_book_id="1"/>
+</dataset>

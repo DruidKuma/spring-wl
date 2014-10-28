@@ -1,0 +1,49 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd"
+	default-autowire="byName">
+
+	<context:annotation-config />
+	<tx:annotation-driven />
+
+	<jpa:repositories base-package="com.epam.weblibrary.repositories"/>
+    <context:component-scan base-package="com.epam.weblibrary.service"/>
+
+    <!-- Configuration properties -->
+    <context:property-placeholder location="classpath:config/hibernate.properties"/>
+
+	<bean id="dataSource" class="com.jolbox.bonecp.BoneCPDataSource" destroy-method="close">
+        <property name="driverClass" value="${hibernate.driver}"/>
+        <property name="jdbcUrl" value="${hibernate.url}" />
+        <property name="username" value="${hibernate.login}"/>
+        <property name="password" value="${hibernate.password}"/>
+	</bean>
+
+    <!-- Initialize the database -->
+    <!--<bean id="dbUtil" class="com.epam.weblibrary.repositories.DbInit"-->
+          <!--init-method="initialize">-->
+    <!--</bean>-->
+
+    <bean id="customUserDetailsService" class="com.epam.weblibrary.service.user.CustomUserDetailsService"/>
+
+    <bean id="multipartResolver"
+                class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
+
+	<bean id="entityManagerFactory"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="jpaVendorAdapter">
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+				<property name="generateDdl" value="true" />
+                <!--<property name="showSql" value="true"/>-->
+				<property name="databasePlatform" value="${hibernate.dialect}" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager"/>
+</beans>

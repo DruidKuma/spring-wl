@@ -1,0 +1,42 @@
+
+!!!Done from the list!!!
+-Order representation
+-Order Status (WAITING, TAKEN, RETURNED)
+-QR code
+-Pagination
+-Refactor admin functions to admin controller
+-Tie another DB or find way to look at tables
+-Deploy on server
+-Admin Panel
+    -User list
+    -Order list
+-Config Spring Security Pages access for users and admin
+-Book Genres
+-Search by author and title
+-Add default book cover
+-Hash Passwords
+-Register form - add "Repeat Password" field
+-Config error pages
+-In book add check the cover to be exclusively image
+-Remember me token
+-Add code to use payment system token (Charge money from given card)
+-About and Contact static info pages
+-Comments and JavaDoc
+-Clear unused css, imports, code
+-Configure Logger and logs
+-Localization on at least 1 more language
+-Diagrams
+-Change LetterHead
+-Move to PostgreSQL
+-Pop-up windows on deleting users
+-Fix bug with multi-threaded requests on already ordered books
+-Add full concurrent support
+-Fix price to send (add discount) and price in PDF (add discount)
+-Refactor config to .properties file
+
+!!!Necessary!!!
+-Tests
+-Fix bug with ?lang=-1
+
+!!!Bonus Features!!!
+-Github
